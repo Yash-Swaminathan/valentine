@@ -17,6 +17,7 @@ const noMessages = [
     "Please reconsider?",
     "I made this whole website for you",
     "The Yes button is right there!",
+    "See how happy you could be if you said yes",
     "I'll take that as a maybe?",
     "Fine, keep trying...",
     "You're only making Yes bigger!",
@@ -38,6 +39,9 @@ const typewriterMsg = $('typewriterMessage');
 const heartsContainer = $('heartsContainer');
 const easterEgg = $('easterEgg');
 const celebrationGif = $('celebrationGif');
+const startGif = $('startGif');
+const swapPhoto = $('swapPhoto');
+const swapPhoto2 = $('swapPhoto2');
 
 // ============================================
 // NO BUTTON HANDLER
@@ -78,6 +82,18 @@ function handleNo(e) {
 
     // Reposition No button
     repositionNo();
+
+    // Swap GIF for photo at 7 clicks
+    if (state.noClickCount === 7 && startGif && swapPhoto) {
+        startGif.style.display = 'none';
+        swapPhoto.classList.remove('hidden');
+    }
+
+    // Swap to second photo at 10 clicks
+    if (state.noClickCount === 10 && swapPhoto && swapPhoto2) {
+        swapPhoto.classList.add('hidden');
+        swapPhoto2.classList.remove('hidden');
+    }
 
     // Easter egg at 15 clicks
     if (state.noClickCount === 15 && !state.easterEggShown) {
@@ -158,7 +174,7 @@ function startCelebration() {
 
     // T+1500: Typewriter
     setTimeout(() => {
-        typewriter("I knew you'd say yes!\nGet ready for the best Valentine's Day ever!", 45);
+        typewriter("I knew you'd say yes!\nYour day is now booked with me on February 14th!", 45);
     }, 1800);
 
     // T+2500: Show celebration GIF
