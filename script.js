@@ -10,19 +10,19 @@ const state = {
 };
 
 const noMessages = [
-    "Are you sure? 🥺",
-    "Really? 💔",
-    "But... but... 😢",
-    "You're breaking my heart! 💔",
-    "Please reconsider? 🥹",
-    "I made this whole website for you 😭",
-    "The 'Yes' button is right there! 👉",
-    "I'll take that as a maybe? 😅",
-    "Fine, keep trying... 😤",
-    "You're only making Yes bigger! 📈",
-    "I can do this all day 💪",
-    "The No button is getting tiny... 🔍",
-    "Okay this is just silly now 🤪"
+    "Are you sure?",
+    "Really?",
+    "But... but...",
+    "You're breaking my heart!",
+    "Please reconsider?",
+    "I made this whole website for you",
+    "The Yes button is right there!",
+    "I'll take that as a maybe?",
+    "Fine, keep trying...",
+    "You're only making Yes bigger!",
+    "I can do this all day",
+    "The No button is getting tiny...",
+    "Okay this is just silly now"
 ];
 
 // ============================================
@@ -158,7 +158,7 @@ function startCelebration() {
 
     // T+1500: Typewriter
     setTimeout(() => {
-        typewriter("I knew you'd say yes! ❤️\nGet ready for the best Valentine's Day ever! 💕", 45);
+        typewriter("I knew you'd say yes!\nGet ready for the best Valentine's Day ever!", 45);
     }, 1800);
 
     // T+2500: Show celebration GIF
@@ -183,7 +183,7 @@ function startCelebration() {
 function launchConfetti() {
     if (typeof confetti === 'undefined') return;
 
-    const colors = ['#ff9ec4', '#ff6b9d', '#ffffff', '#ffb3d9', '#ff7aae'];
+    const colors = ['#f4c2c2', '#e8a0a0', '#ffffff', '#dbdbdb', '#f0b0b0'];
 
     // Center burst
     confetti({
@@ -238,7 +238,7 @@ function typewriter(text, speed) {
 // FLOATING HEARTS
 // ============================================
 function spawnHearts() {
-    const emojis = ['💕', '💖', '💗', '💓', '💝', '❤️', '💘', '🩷'];
+    const emojis = ['♥', '♡', '❤'];
     let count = 0;
     const max = 25;
 
