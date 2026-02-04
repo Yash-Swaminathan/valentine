@@ -2,11 +2,10 @@
    CSS VARIABLES & RESET
    ============================================ */
 :root {
-    --pink: #ff9ec4;
-    --red: #ff6b9d;
+    --bg: #f4c2c2;
+    --btn-color: #dbdbdb;
     --white: #ffffff;
-    --pink-light: #ffb3d9;
-    --pink-dark: #ff7aae;
+    --text-dark: #4a4a4a;
     --safe-top: env(safe-area-inset-top);
     --safe-bottom: env(safe-area-inset-bottom);
     --safe-left: env(safe-area-inset-left);
@@ -32,10 +31,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--pink) 0%, var(--red) 50%, #9b59b6 100%);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-    color: var(--white);
+    background: var(--bg);
+    color: var(--text-dark);
     overflow: hidden;
     overscroll-behavior: none;
     -webkit-overflow-scrolling: touch;
@@ -72,15 +69,13 @@ body {
     display: block;
     margin: 0 auto 1.5rem;
     border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
     -webkit-user-select: none;
     user-select: none;
-    pointer-events: none;
 }
 
 .gif-start {
-    max-width: clamp(140px, 40vw, 200px);
-    height: auto;
+    max-width: clamp(160px, 50vw, 220px);
 }
 
 .gif-end {
@@ -169,9 +164,9 @@ body {
 }
 
 .btn-yes {
-    background: var(--white);
-    color: var(--red);
-    box-shadow: 0 8px 24px rgba(255, 107, 157, 0.3);
+    background: var(--btn-color);
+    color: var(--text-dark);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 100;
     animation: pulse 2s ease-in-out infinite;
@@ -187,9 +182,9 @@ body {
 .btn-yes.intensify-4 { animation: pulseIntense4 0.8s ease-in-out infinite; }
 
 .btn-no {
-    background: rgba(255, 255, 255, 0.15);
-    color: var(--white);
-    border: 2px solid rgba(255, 255, 255, 0.6);
+    background: var(--btn-color);
+    color: var(--text-dark);
+    border: none;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
@@ -214,28 +209,28 @@ body {
 }
 
 @keyframes pulse {
-    0%, 100% { box-shadow: 0 8px 24px rgba(255, 107, 157, 0.3); }
-    50%      { box-shadow: 0 8px 32px rgba(255, 107, 157, 0.5), 0 0 20px rgba(255, 107, 157, 0.3); }
+    0%, 100% { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); }
+    50%      { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 0 20px rgba(244, 194, 194, 0.4); }
 }
 
 @keyframes pulseIntense1 {
-    0%, 100% { box-shadow: 0 8px 24px rgba(255, 107, 157, 0.4); }
-    50%      { box-shadow: 0 12px 40px rgba(255, 107, 157, 0.6), 0 0 30px rgba(255, 107, 157, 0.4); }
+    0%, 100% { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); }
+    50%      { box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18), 0 0 30px rgba(244, 194, 194, 0.5); }
 }
 
 @keyframes pulseIntense2 {
-    0%, 100% { box-shadow: 0 8px 24px rgba(255, 107, 157, 0.5); }
-    50%      { box-shadow: 0 16px 48px rgba(255, 107, 157, 0.7), 0 0 40px rgba(255, 107, 157, 0.5); }
+    0%, 100% { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14); }
+    50%      { box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2), 0 0 40px rgba(244, 194, 194, 0.6); }
 }
 
 @keyframes pulseIntense3 {
-    0%, 100% { box-shadow: 0 8px 24px rgba(255, 107, 157, 0.6); }
-    50%      { box-shadow: 0 20px 56px rgba(255, 107, 157, 0.8), 0 0 50px rgba(255, 107, 157, 0.6); }
+    0%, 100% { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16); }
+    50%      { box-shadow: 0 20px 56px rgba(0, 0, 0, 0.22), 0 0 50px rgba(244, 194, 194, 0.7); }
 }
 
 @keyframes pulseIntense4 {
-    0%, 100% { box-shadow: 0 8px 24px rgba(255, 107, 157, 0.7); }
-    50%      { box-shadow: 0 24px 64px rgba(255, 107, 157, 0.9), 0 0 60px rgba(255, 107, 157, 0.7), 0 0 100px rgba(255, 107, 157, 0.4); }
+    0%, 100% { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18); }
+    50%      { box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25), 0 0 60px rgba(244, 194, 194, 0.8), 0 0 100px rgba(244, 194, 194, 0.4); }
 }
 
 @keyframes bounceIn {
@@ -314,7 +309,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     background: rgba(255, 255, 255, 0.95);
-    color: var(--red);
+    color: var(--text-dark);
     padding: 1rem 2rem;
     border-radius: 20px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
