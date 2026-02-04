@@ -1,0 +1,361 @@
+/* ============================================
+   CSS VARIABLES & RESET
+   ============================================ */
+:root {
+    --pink: #ff9ec4;
+    --red: #ff6b9d;
+    --white: #ffffff;
+    --pink-light: #ffb3d9;
+    --pink-dark: #ff7aae;
+    --safe-top: env(safe-area-inset-top);
+    --safe-bottom: env(safe-area-inset-bottom);
+    --safe-left: env(safe-area-inset-left);
+    --safe-right: env(safe-area-inset-right);
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    height: 100dvh;
+    height: 100vh;
+}
+
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100dvh;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--pink) 0%, var(--red) 50%, #9b59b6 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    color: var(--white);
+    overflow: hidden;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+    padding: var(--safe-top) var(--safe-right) var(--safe-bottom) var(--safe-left);
+    position: relative;
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.question-section {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.question-section.fade-out {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+}
+
+/* ============================================
+   GIF STYLING
+   ============================================ */
+.gif {
+    display: block;
+    margin: 0 auto 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+.gif-start {
+    max-width: clamp(140px, 40vw, 200px);
+    height: auto;
+}
+
+.gif-end {
+    max-width: clamp(180px, 50vw, 260px);
+    height: auto;
+    margin-top: 2rem;
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.main-heading {
+    font-size: clamp(1.8rem, 7vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    line-height: 1.2;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.no-message {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+    font-weight: 600;
+    min-height: 2em;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.no-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.celebration-heading {
+    font-size: clamp(2.2rem, 9vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.typewriter-message {
+    font-size: clamp(1.1rem, 4.5vw, 1.6rem);
+    line-height: 1.6;
+    font-weight: 600;
+    opacity: 0;
+    min-height: 3em;
+}
+
+.typewriter-message.visible {
+    opacity: 1;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.buttons-wrapper {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    min-height: 120px;
+}
+
+.btn {
+    padding: 1rem 2.5rem;
+    font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+    touch-action: manipulation;
+    white-space: nowrap;
+}
+
+.btn-yes {
+    background: var(--white);
+    color: var(--red);
+    box-shadow: 0 8px 24px rgba(255, 107, 157, 0.3);
+    position: relative;
+    z-index: 100;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.btn-yes:active {
+    filter: brightness(0.95);
+}
+
+.btn-yes.intensify-1 { animation: pulseIntense1 1.5s ease-in-out infinite; }
+.btn-yes.intensify-2 { animation: pulseIntense2 1.2s ease-in-out infinite; }
+.btn-yes.intensify-3 { animation: pulseIntense3 1s ease-in-out infinite; }
+.btn-yes.intensify-4 { animation: pulseIntense4 0.8s ease-in-out infinite; }
+
+.btn-no {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--white);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.btn-no:active {
+    filter: brightness(0.9);
+}
+
+/* When No button is repositioned absolutely */
+.btn-no.repositioned {
+    position: fixed;
+    z-index: 200;
+}
+
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+@keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 8px 24px rgba(255, 107, 157, 0.3); }
+    50%      { box-shadow: 0 8px 32px rgba(255, 107, 157, 0.5), 0 0 20px rgba(255, 107, 157, 0.3); }
+}
+
+@keyframes pulseIntense1 {
+    0%, 100% { box-shadow: 0 8px 24px rgba(255, 107, 157, 0.4); }
+    50%      { box-shadow: 0 12px 40px rgba(255, 107, 157, 0.6), 0 0 30px rgba(255, 107, 157, 0.4); }
+}
+
+@keyframes pulseIntense2 {
+    0%, 100% { box-shadow: 0 8px 24px rgba(255, 107, 157, 0.5); }
+    50%      { box-shadow: 0 16px 48px rgba(255, 107, 157, 0.7), 0 0 40px rgba(255, 107, 157, 0.5); }
+}
+
+@keyframes pulseIntense3 {
+    0%, 100% { box-shadow: 0 8px 24px rgba(255, 107, 157, 0.6); }
+    50%      { box-shadow: 0 20px 56px rgba(255, 107, 157, 0.8), 0 0 50px rgba(255, 107, 157, 0.6); }
+}
+
+@keyframes pulseIntense4 {
+    0%, 100% { box-shadow: 0 8px 24px rgba(255, 107, 157, 0.7); }
+    50%      { box-shadow: 0 24px 64px rgba(255, 107, 157, 0.9), 0 0 60px rgba(255, 107, 157, 0.7), 0 0 100px rgba(255, 107, 157, 0.4); }
+}
+
+@keyframes bounceIn {
+    0%   { opacity: 0; transform: scale(0.3); }
+    50%  { opacity: 1; transform: scale(1.05); }
+    70%  { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) translateX(0) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(-10vh) translateX(var(--drift-x)) scale(1);
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(var(--drift-x)) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   CELEBRATION & HEARTS
+   ============================================ */
+.celebration-section {
+    transition: opacity 0.6s ease;
+}
+
+.celebration-section.visible {
+    animation: fadeInUp 1s ease forwards;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
+
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    font-size: clamp(1.5rem, 6vw, 3rem);
+    animation: floatHeart var(--duration) ease-in forwards;
+    animation-delay: var(--delay);
+    pointer-events: none;
+    bottom: -50px;
+}
+
+/* ============================================
+   EASTER EGG
+   ============================================ */
+.easter-egg {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--red);
+    padding: 1rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    max-width: 90vw;
+}
+
+.easter-egg.show {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.easter-egg-text {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+    font-weight: 600;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 375px) {
+    .container { padding: 15px; }
+    .buttons-wrapper { gap: 1rem; }
+    .btn { padding: 0.8rem 2rem; }
+    .main-heading { margin-bottom: 0.8rem; }
+    .gif-start { max-width: 130px; }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .main-heading { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .buttons-wrapper { gap: 1rem; min-height: 60px; }
+    .btn { padding: 0.6rem 1.5rem; }
+    .gif-start { max-width: 100px; margin-bottom: 0.8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
